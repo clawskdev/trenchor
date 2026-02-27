@@ -1,0 +1,99 @@
+{
+  "name": "trenchor",
+  "version": "1.0.0",
+  "description": "Trenchor - A Strategic Trading Game using OpusGameLabs Skills",
+  "type": "game",
+  "author": "OpusGameLabs",
+  "license": "MIT",
+  "categories": ["game", "trading", "strategy"],
+  "mainFile": "trenchor.js",
+  "entryPoint": "Trenchor",
+  "gameConfig": {
+    "title": "TRENCHOR",
+    "description": "A strategic trading game where players buy and sell commodities to maximize profits",
+    "minPlayers": 1,
+    "maxPlayers": 4,
+    "estimatedPlaytime": "15-30 minutes",
+    "difficulty": "Medium",
+    "rounds": 10,
+    "startingBalance": 10000,
+    "commodities": [
+      {
+        "id": "gold",
+        "name": "Gold",
+        "basePrice": 100,
+        "volatility": 0.15,
+        "emoji": "🥇"
+      },
+      {
+        "id": "silver",
+        "name": "Silver",
+        "basePrice": 50,
+        "volatility": 0.12,
+        "emoji": "🥈"
+      },
+      {
+        "id": "wheat",
+        "name": "Wheat",
+        "basePrice": 30,
+        "volatility": 0.20,
+        "emoji": "🌾"
+      },
+      {
+        "id": "oil",
+        "name": "Oil",
+        "basePrice": 80,
+        "volatility": 0.18,
+        "emoji": "🛢️"
+      },
+      {
+        "id": "uranium",
+        "name": "Uranium",
+        "basePrice": 200,
+        "volatility": 0.25,
+        "emoji": "☢️"
+      }
+    ]
+  },
+  "commands": {
+    "addPlayer": "Add a new player to the game",
+    "buy": "Buy commodities",
+    "sell": "Sell commodities",
+    "getMarketState": "View current market prices",
+    "getPlayerInfo": "View player portfolio and stats",
+    "getLeaderboard": "View scoring leaderboard",
+    "nextRound": "Advance to the next round"
+  },
+  "playDotFunConfig": {
+    "enabled": true,
+    "leaderboardIntegration": true,
+    "achievementsEnabled": true,
+    "achievements": [
+      {
+        "id": "first_trader",
+        "name": "First Trade",
+        "description": "Complete your first trade"
+      },
+      {
+        "id": "bull_market",
+        "name": "Bull Market",
+        "description": "Make 10 profitable trades"
+      },
+      {
+        "id": "market_crash",
+        "name": "Market Survivor",
+        "description": "Recover from a 50% portfolio loss"
+      },
+      {
+        "id": "golden_touch",
+        "name": "Golden Touch",
+        "description": "End game with 150% profit"
+      },
+      {
+        "id": "diversified",
+        "name": "Diversified Portfolio",
+        "description": "Own all 5 commodities at once"
+      }
+    ]
+  }
+}

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRENCHOR - Strategic Trading Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .tagline {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .card p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: #764ba2;
+        }
+
+        .btn-secondary {
+            background: #764ba2;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+        }
+
+        .features {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .features h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-item {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 4px solid #667eea;
+        }
+
+        .feature-item strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .feature-item p {
+            color: #666;
+            font-size: 0.9em;
+            margin: 0;
+        }
+
+        .commodities {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .commodity {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .commodity .emoji {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        .commodity .name {
+            font-size: 0.9em;
+        }
+
+        .commodity .price {
+            font-size: 0.8em;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .game-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .commodities {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            }
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 15px;
+            background: #f0f4ff;
+            border-radius: 10px;
+            border: 2px solid #667eea;
+        }
+
+        .stat-box strong {
+            color: #667eea;
+            font-size: 1.5em;
+            display: block;
+        }
+
+        .stat-box p {
+            color: #666;
+            font-size: 0.9em;
+            margin: 5px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 TRENCHOR</h1>
+            <p class="tagline">Strategic Trading Game - Manage Commodities, Maximize Profit</p>
+        </header>
+
+        <div class="game-grid">
+            <div class="card">
+                <h2>📚 About the Game</h2>
+                <p>TRENCHOR is a thrilling trading game where you manage a portfolio of commodities in a volatile market. Buy low, sell high, and outsmart your opponents to become the wealthiest trader!</p>
+                <p><strong>Starting Capital:</strong> $10,000</p>
+                <p><strong>Game Length:</strong> 10 Rounds</p>
+                <p><strong>Players:</strong> 1-4 Humans + AI</p>
+                <a href="#" class="btn" onclick="alert('Game mechanics coming soon!')">Learn More</a>
+            </div>
+
+            <div class="card">
+                <h2>🤖 Face AI Opponents</h2>
+                <p>Challenge yourself against intelligent AI traders with different strategies:</p>
+                <ul style="margin-left: 20px; color: #555;">
+                    <li>🛡️ Conservative - Safe, steady gains</li>
+                    <li>⚖️ Balanced - Medium risk/reward</li>
+                    <li>🚀 Aggressive - High-risk plays</li>
+                    <li>📊 Volatility - Exploits price swings</li>
+                </ul>
+                <a href="#" class="btn btn-secondary" onclick="alert('AI gameplay coming soon!')">Play vs AI</a>
+            </div>
+        </div>
+
+        <div class="features">
+            <h3>🏆 Game Features</h3>
+
+            <h4 style="color: #667eea; margin: 20px 0 15px 0;">Trade These Commodities:</h4>
+            <div class="commodities">
+                <div class="commodity">
+                    <div class="emoji">🥇</div>
+                    <div class="name">Gold</div>
+                    <div class="price">$100</div>
+                </div>
+                <div class="commodity">
+                    <div class="emoji">🥈</div>
+                    <div class="name">Silver</div>
+                    <div class="price">$50</div>
+                </div>
+                <div class="commodity">
+                    <div class="emoji">🌾</div>
+                    <div class="name">Wheat</div>
+                    <div class="price">$30</div>
+                </div>
+                <div class="commodity">
+                    <div class="emoji">🛢️</div>
+                    <div class="name">Oil</div>
+                    <div class="price">$80</div>
+                </div>
+                <div class="commodity">
+                    <div class="emoji">☢️</div>
+                    <div class="name">Uranium</div>
+                    <div class="price">$200</div>
+                </div>
+            </div>
+
+            <h4 style="color: #667eea; margin: 20px 0 15px 0;">Game Highlights:</h4>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <strong>📉 Dynamic Market</strong>
+                    <p>Prices change unpredictably each round</p>
+                </div>
+                <div class="feature-item">
+                    <strong>💼 Portfolio Management</strong>
+                    <p>Track cash, inventory, and net worth</p>
+                </div>
+                <div class="feature-item">
+                    <strong>📊 Smart Analytics</strong>
+                    <p>View price history and trends</p>
+                </div>
+                <div class="feature-item">
+                    <strong>🏅 Leaderboard</strong>
+                    <p>Compete for highest returns</p>
+                </div>
+                <div class="feature-item">
+                    <strong>🎯 Strategy Focus</strong>
+                    <p>Multiple paths to victory</p>
+                </div>
+                <div class="feature-item">
+                    <strong>🤖 AI Opponents</strong>
+                    <p>Intelligent trading strategies</p>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat-box">
+                    <strong>10</strong>
+                    <p>Game Rounds</p>
+                </div>
+                <div class="stat-box">
+                    <strong>5</strong>
+                    <p>Tradeable Commodities</p>
+                </div>
+                <div class="stat-box">
+                    <strong>$10K</strong>
+                    <p>Starting Capital</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>🎮 TRENCHOR v1.0.0 | Built with OpusGameLabs Skills | Integrated with Play.fun</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">© 2026 - Strategic Trading Game</p>
+        </footer>
+    </div>
+
+    <script>
+        // Game will be injected here for full integration
+        // This is a landing page showing the public face of TRENCHOR
+        
+        console.log('🎮 TRENCHOR Game Ready');
+    </script>
+</body>
+</html>

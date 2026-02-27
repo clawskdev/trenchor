@@ -1,0 +1,29 @@
+{
+  "name": "trenchor",
+  "version": "1.0.0",
+  "description": "TRENCHOR - A Strategic Trading Game using OpusGameLabs Skills",
+  "main": "trenchor.js",
+  "scripts": {
+    "start": "node trenchor.js",
+    "play": "node trenchor.js",
+    "demo": "node trenchor.js",
+    "ai-demo": "node ai-opponent.js",
+    "examples": "node examples.js",
+    "upload-to-playfun": "node upload-to-playfun.js",
+    "test": "echo \"Testing TRENCHOR...\" && node trenchor.js"
+  },
+  "keywords": [
+    "game",
+    "trading",
+    "strategy",
+    "opusgamelabs",
+    "playdotfun"
+  ],
+  "author": "OpusGameLabs",
+  "license": "MIT",
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/opusgamelabs/skills.git"
+  }
+}
