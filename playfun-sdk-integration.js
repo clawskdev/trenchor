@@ -8,7 +8,7 @@
 
   // Configuration
   const config = {
-    gameId: '3987d408-6a1e-48e7-b144-12b30afa3e49',
+    gameId: '53f2bb0d-b0c5-4ba0-8f6b-04babc02a1fc',
     apiKey: '3987d408-6a1e-48e7-b144-12b30afa3e49',
     gameUrl: 'https://clawskdev.github.io/trenchor',
     apiBase: 'https://api.opengameprotocol.com'
