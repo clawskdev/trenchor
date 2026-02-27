@@ -37,42 +37,8 @@
      * Claim game on Play.fun
      */
     claimGame: async function() {
-      if (!this.verifyOwnership()) {
-        console.error('❌ Cannot claim game - ownership not verified');
-        return null;
-      }
-
-      console.log('📝 Claiming game on Play.fun...');
-
-      try {
-        const response = await fetch(`${config.apiBase}/games`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${config.apiKey}`
-          },
-          body: JSON.stringify({
-            name: 'TRENCHOR',
-            description: 'A strategic trading game where players buy and sell commodities in a volatile market.',
-            gameUrl: config.gameUrl,
-            platform: 'web',
-            gameCoinSymbol: 'TRENCH'
-          })
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          console.log('✅ Game claimed successfully!');
-          console.log('Game ID:', data.id);
-          return data;
-        } else {
-          console.error('❌ Claim failed:', response.statusText);
-          return null;
-        }
-      } catch (error) {
-        console.error('❌ Error claiming game:', error.message);
-        return null;
-      }
+      console.log('✅ Game already claimed on Play.fun (ID: 53f2bb0d-b0c5-4ba0-8f6b-04babc02a1fc)');
+      return { id: '53f2bb0d-b0c5-4ba0-8f6b-04babc02a1fc' };
     },
 
     /**
